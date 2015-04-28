@@ -2,59 +2,25 @@
 <html>
 <head>
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="bower_compnents/ui-router/release/angular-ui-router.min.js" rel="script">
-  <link href="bower_components/angular/dist/angular.min.js" rel="script">
-  <link href="app.js" rel="script">
-  <link href="controllers/MainCtrl.js" rel="script">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/MainCtrl.js"></script>
   <title> Passport Implementation </title>
 </head>
 <body ng-app="app">
   <div class="container">
-
-
   <!-- BEGIN NAVBAR -->
-
-
-  <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-  <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-    <li ui-route="/signup" ng-class="{active: $uiRoute}">
-      <a href="/#!/signup">Sign Up</a>
-    </li>
-    <li class="divider-vertical"></li>
-    <li ui-route="/signin" ng-class="{active: $uiRoute}">
-      <a href="/#!/signin">Sign In</a>
-    </li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="/#!/settings/profile">Edit Profile</a>
-        </li>
-        <li>
-          <a href="/#!/settings/accounts">Manage Social Accounts</a>
-        </li>
-        <li data-ng-show="authentication.user.employee > 1">
-          <a href="/#!/schedule/create"> Create Schedule </a>
-        </li>
-        <li data-ng-show="authentication.user.employee">
-          <a href="/#!/schedule"> See Schedule </a>
-        </li>
-        <li data-ng-show="authentication.user.provider === 'local'">
-          <a href="/#!/settings/password">Change Password</a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a href="/auth/signout">Signout</a>
-      </li>
-      </ul>
-      </li>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="#">Code Refractoring!</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="signin">Signin</a></li>
     </ul>
-  </nav>
-
+</nav>
   <!-- END NAV BAR -->
   
   <div ui-view></div>

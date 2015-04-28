@@ -25,6 +25,7 @@
     "express": "~4.12.3",
     "mongoose": "~4.0.2",
     "method-override": "~2.3.2",
-    "bcrypt": "~0.8.2"
+    "bcrypt": "~0.8.2",
+    "lodash": "~3.7.0"
   }
 }

@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bower_compnents/ui-router/release/angular-ui-router.min.js" rel="script">
+  <link href="bower_components/angular/dist/angular.min.js" rel="script">
+  <link href="app.js" rel="script">
+  <link href="controllers/MainCtrl.js" rel="script">
+  <title> Passport Implementation </title>
+</head>
+<body ng-app="app">
+  <div class="container">
+
+
+  <!-- BEGIN NAVBAR -->
+
+
+  <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+  <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+    <li ui-route="/signup" ng-class="{active: $uiRoute}">
+      <a href="/#!/signup">Sign Up</a>
+    </li>
+    <li class="divider-vertical"></li>
+    <li ui-route="/signin" ng-class="{active: $uiRoute}">
+      <a href="/#!/signin">Sign In</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="/#!/settings/profile">Edit Profile</a>
+        </li>
+        <li>
+          <a href="/#!/settings/accounts">Manage Social Accounts</a>
+        </li>
+        <li data-ng-show="authentication.user.employee > 1">
+          <a href="/#!/schedule/create"> Create Schedule </a>
+        </li>
+        <li data-ng-show="authentication.user.employee">
+          <a href="/#!/schedule"> See Schedule </a>
+        </li>
+        <li data-ng-show="authentication.user.provider === 'local'">
+          <a href="/#!/settings/password">Change Password</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="/auth/signout">Signout</a>
+      </li>
+      </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- END NAV BAR -->
+  
+  <div ui-view></div>
+
+</div>      
+</body>
+</html>
