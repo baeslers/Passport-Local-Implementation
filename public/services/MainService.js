@@ -1,6 +1,8 @@
-angular.module('app').factory('UserService', ['$http', function($http){
-  var o = {
-
+angular.module('MainService', []).factory('User', ['$http', function($http){
+  var user = {
+  	username: String,
+  	password: String,
+  	roles: [{type: String, default: 'user'}]
   };
-  return o;
+  return user;
 }]);

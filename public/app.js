@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'MainCtrl']);
+var app = angular.module('app', ['ui.router', 'MainCtrl', 'MainService']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     
@@ -8,16 +8,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
-            url: '/home',
+            url: '/',
             templateUrl: 'views/home.html',
-            controller: 'MainController'
         })
         
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('signin', {
             url: '/signin',
             templateUrl: 'views/signin.html',
-            controller: 'MainController'
         });
         
 });

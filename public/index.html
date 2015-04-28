@@ -6,9 +6,10 @@
   <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
   <script src="app.js"></script>
   <script src="controllers/MainCtrl.js"></script>
+  <script src="services/MainService.js"></script>
   <title> Passport Implementation </title>
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller="MainController">
   <div class="container">
   <!-- BEGIN NAVBAR -->
 <nav class="navbar navbar-inverse" role="navigation">
@@ -18,7 +19,10 @@
     <ul class="nav navbar-nav">
         <li><a ui-sref="home">Home</a></li>
         <li><a ui-sref="about">About</a></li>
-        <li><a ui-sref="signin">Signin</a></li>
+        <li ng-hide="user"><a ui-sref="signin">Signin</a></li>
+        <li ng-show="admin"><a href="/admin">Admin Panel</a>
+        <li><a ng-click="logout" ng-show="user">Logout</a></li>
+        </ul>
     </ul>
 </nav>
   <!-- END NAV BAR -->

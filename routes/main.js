@@ -20,9 +20,13 @@ module.exports = function(app, passport){
            });
         });
     });
-    app.post('/signin', passport.authenticate('local-signin', {
-    	successRedirect: '/',
-    	failureRedirect: '/nowhere'
-    }));
+    app.post('/signin', passport.authenticate('local-signin'), function(req, res){
+      res.jsonp(req.user);
+    });
+
+    app.post('/logout', function(req, res){
+      req.user.logout();
+      res.redirect('/');
+    });
 
 };

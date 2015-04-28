@@ -5,8 +5,10 @@ var _ = require('lodash');
 
 module.exports = function(app, passport){
   var router = express.Router();
+  router.use(express.static(__dirname + '../public/'));
   router.use(function(req, res, next){
-    if (!req.user || !_contains(req.user.roles, 'admin')){ res.status(400).redirect('/'); return; }
+    if (!req.user || !_.contains(req.user.roles, 'admin')){ res.status(400).redirect('/'); return; }
+    console.log(req.user);
     next();
   });
   router.route('/')
