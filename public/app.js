@@ -2,7 +2,7 @@ var app = angular.module('app', ['ui.router', 'MainCtrl', 'MainService']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
     
     $stateProvider
         
@@ -16,6 +16,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('signin', {
             url: '/signin',
             templateUrl: 'views/signin.html',
+        })
+
+        .state('about', {
+            url: '/about',
+            templateUrl: 'views/about.html'
         });
-        
+
 });

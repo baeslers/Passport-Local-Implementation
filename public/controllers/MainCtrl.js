@@ -3,20 +3,10 @@ angular.module('MainCtrl', []).controller('MainController', [
 '$http',
 '$location',
 'User',
-function($scope, $http, $location){
+function($scope, $http, $location, User){
   $scope.signin = function(form){
-    $http.post('http://localhost:3000/signin', {username: form.username, password: form.password}).
-      success(function(data, status, headers, config){
-		if(data){
-			$scope.user = data;
-			$location.path('/');
-		}
-		$scope.error = 'Bad username/password';
-      }).
-      error(function(data, status, headers, config){
-      	console.log('ERROR!!! :(');
-      	console.log(data+status+headers+config);
-      });
+    var user = User.login(form.username, form.password);
+    console.log(user);
   };
 
   $scope.logout = function(){
